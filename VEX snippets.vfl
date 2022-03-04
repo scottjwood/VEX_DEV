@@ -1,0 +1,16 @@
+Random_carve snipped from Mark Fancher
+https://www.youtube.com/watch?reload=9&v=qSkG0ac5RmU
+
+--- get_uv2 wrangle ---
+f@curveu = @uv.x;
+
+--- random_carve wrangle ---
+float progress = fit01(chf("progress"), 1, -1);
+progress += chramp("distribution", rand(@primnum));
+progress = clamp(progress,0,1);
+
+if(ch("reverse")==1) {
+    @P = primuv(0, "P", @primnum, set(fit01(@curveu, progress, 1), 0.0, 0.0));
+} else {
+    @P = primuv(0, "P", @primnum, set(fit01(@curveu, 1-progress, 1), 0.0, 0.0));
+}
